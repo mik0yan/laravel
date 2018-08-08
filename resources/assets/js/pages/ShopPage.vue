@@ -10,7 +10,6 @@
 
 <script>
 import ProductCmp from '../components/ProductCmp.vue'
-
 export default {
     name: "shopSec",
     data: function() {

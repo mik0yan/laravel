@@ -28,7 +28,7 @@ class BaseController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','register','verifysms']]);
+//        $this->middleware('auth:api', ['except' => ['login','register','verifysms']]);
     }
 
 
@@ -46,7 +46,7 @@ class BaseController extends Controller
     protected function respondWithToken($token,$data="")
     {
         return response()->json([
-            'access_token' => $token,
+            'token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth('api')->factory()->getTTL() * 60,
             'data' => $data
@@ -59,6 +59,23 @@ class BaseController extends Controller
             'code' =>$code,
             'message' => $message,
             'data'=> $data,
+        ]);
+    }
+
+    protected function respondWithCode($data,$message="success",$code=1)
+    {
+        return response()->json([
+            'code' =>$code,
+            'message' => $message,
+            'data'=> $data,
+        ]);
+    }
+
+    protected function responseWithErr($errcode = 0,$message = "")
+    {
+        return response()->json([
+            'err' => $errcode,
+            'error_msg'=>$message ?? ""
         ]);
     }
 

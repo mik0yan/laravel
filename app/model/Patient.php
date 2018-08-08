@@ -18,7 +18,7 @@ class Patient extends Model
 
     public function suppliers()
     {
-        return $this->belongsToMany(Supplier::class);
+        return $this->belongsToMany(Supplier::class)->attach(['order_no','policy_no']);
     }
 
     public function Area()

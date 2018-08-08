@@ -6,11 +6,18 @@ import App from './App'
 import router from './router'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import axios from 'axios'
 
+Vue.use(axios)
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
+const axiosGloble = axios.create({
+  timeout: 3000,
+  headers: {'Access-Control-Allow-Origin': '*'}
+})
+Vue.prototype.$http = axiosGloble
+
 new Vue({
   el: '#app',
   router,

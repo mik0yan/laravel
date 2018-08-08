@@ -32,6 +32,9 @@
             'exam-form': ExamForm,
         },
         name: 'record',
+        mounted(){
+           this.getPatient()
+        },
         data () {
             return {
                 activeName: 'first',
@@ -95,7 +98,15 @@
                 },
             }
         },
+
         methods: {
+            getPatient(){
+                axios.get('/api/productlist/'+this.$route.params.stock_id).then((response)=>{
+                    this.list = response.data;
+                    console.log(response.data);
+                });
+            },
+
             onSubmit() {
                 console.log(this.form);
             },

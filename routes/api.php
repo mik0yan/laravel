@@ -75,9 +75,24 @@ $api->version('v1', function ($api) {
         'prefix' => 'res'], function ($api) {
         $api->get('symptoms','ResourceController@symptoms');
         $api->get('record','ResourceController@exam');
+        $api->get('inpatient/{id}','ResourceController@inpatient');
+    });
+
+    $api->group([
+        'namespace' => 'App\Http\Controllers',
+        'prefix' => 'supplier'], function ($api) {
+        $api->post('login','SupplierController@login');
+        $api->post('policyno','BznController@getPatient');
+        $api->post('patient_price/sync','BznController@updatePrice');
+        $api->post('patient_policy/sync','BznController@updatePolicy');
+        $api->post('patient_policy/fail','BznController@failPolicy');
     });
 
 });
+
+Route::post('test/{id}',"BznController@commitInsured");
+Route::post('test2',"BznController@getPatient");
+Route::post('test3/{id}',"BznController@uploadHealthItem");
 
 //Route::group([
 //

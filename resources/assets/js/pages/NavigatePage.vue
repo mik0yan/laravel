@@ -6,6 +6,7 @@
         <router-link tag='div' to="home" class="navItem">首页</router-link>
       </div>
       <div class="subNavSec">
+        <!-- 如果意见登陆，才跳转到商品 -->
         <router-link tag='div' to="shoppage" class="navItem">商城New</router-link>
         <router-link tag='div' to="rgsorlg" class="navItem">登陆/注册</router-link>
       </div>

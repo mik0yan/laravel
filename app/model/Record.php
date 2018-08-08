@@ -15,4 +15,9 @@ class Record extends Model
     {
         return $this->belongsTo(Practice::class);
     }
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class);
+    }
 }

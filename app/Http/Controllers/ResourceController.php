@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\model\Patient;
 use App\model\Practice;
 use App\model\Symptom;
 use Illuminate\Http\Request;
@@ -40,5 +41,10 @@ class ResourceController extends Controller
                 $key = $k;
             return [$key=>$item];
         });
+    }
+
+    public function inpatient($id)
+    {
+        return Patient::find($id)->inpatients ?? [];
     }
 }

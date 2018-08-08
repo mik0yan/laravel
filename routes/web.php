@@ -26,3 +26,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/web',function(){
     return view('web');
 });
+
+Route::group(['prefix' => 'swagger'], function () {
+    Route::get('json', 'SwaggerController@getJSON');
+    Route::get('my-data', 'SwaggerController@getMyData');
+});

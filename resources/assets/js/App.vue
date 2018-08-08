@@ -6,7 +6,6 @@
 
 <script>
 import NvgPage from './pages/NavigatePage.vue'
-// import func from './vue-temp/vue-editor-bridge'
 
 export default {
   name: 'app',

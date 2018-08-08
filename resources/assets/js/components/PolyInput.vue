@@ -14,6 +14,11 @@
             </el-input>
         </el-col>
     </el-col>
+    <el-col :span="11" v-else-if="item.twn == 3">
+        <el-input label="item.name"  v-model="item.res">
+            <template slot="append">{{item.unt}}</template>
+        </el-input>
+    </el-col>
     <el-col :span="12" v-else-if="item.twn == 5" size="small">
         <el-radio-group v-model="item.res" size="medium">
             <el-radio-button
@@ -24,23 +29,40 @@
             </el-radio-button>
         </el-radio-group>
     </el-col>
-    <el-col :span="12" v-else-if="item.twn == 6">
-        <el-checkbox-group v-model="item.res">
-            <el-checkbox
-                    v-for="option in JSON.parse(item.dsc)"
-                    :key="option.id"
-                    :label="option.id">{{option.name}}
-            </el-checkbox>
-        </el-checkbox-group>
-    </el-col>
-    <el-col :span="12" v-else-if="item.twn == 7">
-        <el-checkbox-group v-model="item.res">
+    <el-col :span="24" v-else-if="item.twn == 6">
+        <el-checkbox-group v-model="res" size="small">
+            <!--<el-checkbox-group v-model="checkboxGroup3" size="small">-->
+                <!--<el-checkbox-button v-for="(option,index ) in JSON.parse(item.dsc)" :label="option.name" :key="option.id">{{option.name}}</el-checkbox-button>-->
+            <!--</el-checkbox-group>-->
             <el-checkbox-button
-                    v-for="option in JSON.parse(item.dsc)"
+                    v-for="(option,index ) in JSON.parse(item.dsc)"
                     :key="option.id"
-                    :label="option.id">{{option.name}}
+                    :label="option.name">
+                    {{option.name}}
             </el-checkbox-button>
         </el-checkbox-group>
+    </el-col>
+    <el-col :span="24" v-else-if="item.twn == 7">
+        <el-radio-group v-model="item.res" size="small">
+            <el-radio-button
+                    v-for="option in JSON.parse(item.dsc)"
+                    :key="option.id"
+                    :label="option.id">
+                {{option.name}}
+            </el-radio-button>
+        </el-radio-group>
+    </el-col>
+    <el-col :span="24" v-else-if="item.twn == 8">
+        <el-radio-group v-model="item.res" size="small">
+            <el-radio-button label="1">是</el-radio-button>
+            <el-radio-button label="2">否</el-radio-button>
+        </el-radio-group>
+    </el-col>
+    <el-col :span="24" v-else-if="item.twn == 9">
+        <el-radio-group v-model="item.res" size="small">
+            <el-radio-button v-model="radio" label="1">是</el-radio-button>
+            <el-radio-button v-model="radio" label="2">其他</el-radio-button>
+        </el-radio-group>
     </el-col>
     <el-col :span="24" v-else-if="item.twn == 32">
         <el-row>
@@ -68,7 +90,7 @@
         name: 'item',
         data() {
             return {
-                res:[],
+                res:[{"id":1}],
                 options:JSON.parse(this.item.dsc),
                 newOption:""
             }

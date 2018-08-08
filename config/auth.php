@@ -46,9 +46,14 @@ return [
             'provider' => 'users',
         ],
 
-        'coaches' => [
+        'coach' => [
             'driver' => 'jwt',
             'provider' => 'coaches',
+        ],
+
+        'supplier' => [
+            'driver' => 'jwt',
+            'provider' => 'suppliers',
         ],
     ],
 
@@ -75,10 +80,11 @@ return [
             'model' => App\User::class,
         ],
 
-//        'users' => [
-//            'driver' => 'eloquent',
-//            'model' => App\model\Coach::class,
-//        ],
+        'suppliers' => [
+            'driver' => 'eloquent',
+            'model' => App\model\Supplier::class,
+            'table' => 'suppliers'
+        ],
 
          'coaches' => [
              'driver' => 'eloquent',
@@ -104,6 +110,11 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 3600,
+        ],
+        'suppliers' => [
+            'provider' => 'supplier',
             'table' => 'password_resets',
             'expire' => 3600,
         ],

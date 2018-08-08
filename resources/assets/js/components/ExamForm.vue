@@ -6,7 +6,7 @@
             </el-col>
         </el-form-item>
         <el-tabs v-model="activeName">
-            <el-tab-pane label="症状" name="section1">
+            <el-tab-pane label="症状" name="symptoms">
                 <el-form-item label="症状">
                     <el-checkbox-group v-model="form.exam.symptoms">
                         <el-checkbox v-for="(v,k) in mysymptoms" :label="v.name" :key="v.id" :index="k"  ></el-checkbox>
@@ -100,6 +100,7 @@
                 'myexams':{
 
                 },
+                'activeName':'symptoms',
             }
         },
         methods: {
